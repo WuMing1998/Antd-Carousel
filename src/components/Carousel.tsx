@@ -6,7 +6,7 @@ import {
     RightOutlined,
 } from '@ant-design/icons';
 
-import type {ChangeDir} from './typing'
+import type { ChangeDir } from './typing'
 
 const contentStyle = {
     height: '160px',
@@ -23,7 +23,7 @@ const CarouselC: FC = () => {
     ])
     const addDeferred = useDeferredValue(nums)
 
-    
+
     useEffect(() => {
         console.log(nums)
         carpisel.current?.goTo(nums.length - 1);
@@ -37,11 +37,9 @@ const CarouselC: FC = () => {
         setNums(nums.filter((num) => num != nums.length))
     }, [nums])
 
-    const change = useCallback(()=>{
-        (dir:ChangeDir)=>{
-            carpisel.current![dir]();
-        }
-    },[])
+    const change = useCallback((dir: ChangeDir) => {
+        carpisel.current![dir]();
+    }, [])
 
     return (
         <>
@@ -54,9 +52,9 @@ const CarouselC: FC = () => {
                     )
                 })}
             </Carousel>
-            <Space style={{ width: '100%', display: 'flex', 'justifyContent':'space-around' }} align='center'>
-                <LeftOutlined onClick={()=>change('prev')} style={{ fontSize: 40 ,color:'#575757'}} />
-                <RightOutlined onClick={()=>change('next')} style={{ fontSize: 40 ,color:'#575757'}} />
+            <Space style={{ width: '100%', display: 'flex', 'justifyContent': 'space-around' }} align='center'>
+                <LeftOutlined onClick={() => change('prev')} style={{ fontSize: 40, color: '#575757' }} />
+                <RightOutlined onClick={() => change('next')} style={{ fontSize: 40, color: '#575757' }} />
             </Space>
             <Space style={{ width: '100%', display: 'flex', 'justifyContent': 'center', marginTop: '80px' }} align='center'>
                 <Button type="primary" onClick={add}>add</Button>
