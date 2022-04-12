@@ -37,9 +37,11 @@ const CarouselC: FC = () => {
         setNums(nums.filter((num) => num != nums.length))
     }, [nums])
 
-    const change = (dir:ChangeDir)=>{
-        carpisel.current![dir]();
-    }
+    const change = useCallback(()=>{
+        (dir:ChangeDir)=>{
+            carpisel.current![dir]();
+        }
+    },[])
 
     return (
         <>
